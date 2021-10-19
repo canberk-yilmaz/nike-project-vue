@@ -1,35 +1,32 @@
 <template>
   <div id="app">
-    <div class="nav">
     <Navbar />
-    <ShoppingCart />
-    </div>
     <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
-    <b-row class="d-flex flex-row justify-content-around align-items-center">
-      <div class="col-12">
-        <ProductCard
-          :product="product"
-          v-for="(product, i) in productList"
-          :key="i"
-          class="col"
-        />
-      </div>
+
+    <b-row class="d-flex align-items-center justify-content-center">
+      <ProductCard
+        :product="product"
+        v-for="(product, i) in productList"
+        :key="i"
+        class="col"
+      />
     </b-row>
+
+    <img
+      src="https://ata-patika-odev1.surge.sh/img/pink.75d18eac.png"
+      alt="shoe"
+    />
   </div>
 </template>
 
 <script>
-
 import Navbar from "./components/Navbar.vue";
 import ProductCard from "./components/ProductCard.vue";
-import ShoppingCart from "./components/ShoppingCart.vue";
-
 
 export default {
   name: "App",
   components: {
     Navbar,
-    ShoppingCart,
     ProductCard,
   },
   data() {
@@ -40,7 +37,6 @@ export default {
           color: "Black",
           summary:
             "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam, quam.",
-          rating: 4,
           price: 10,
           images: [
             "https://github.com/canberk-yilmaz/nike-project-vue/blob/main/src/img/black/1.webp?raw=true",
@@ -53,12 +49,13 @@ export default {
           size: [5, 6, 7, 8, 9, 10, 11, 12],
           stock: 10,
           category: "men's running shoes",
+          rating: 4,
         },
         {
           title: "Nike Epic React Flyknit 2",
           color: "Pearl Pink",
-          summary: "Lorem ipsum dolor sit amet.",
-          rating: 3,
+          summary:
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam, quam.",
           price: 20,
           images: [
             "https://github.com/canberk-yilmaz/nike-project-vue/blob/main/src/img/pearlPink/1.png?raw=true",
@@ -71,6 +68,7 @@ export default {
           size: [5, 6, 7, 8, 9, 10, 11, 12],
           stock: 10,
           category: "women's running shoes",
+          rating: 5,
         },
         {
           title: "Nike Epic React Flyknit 3",
@@ -88,6 +86,7 @@ export default {
           size: [5, 6, 7, 8, 9, 10, 11, 12],
           stock: 10,
           category: "women's running shoes",
+          rating: 4,
         },
         {
           title: "Nike Epic React Flyknit 4",
@@ -105,9 +104,48 @@ export default {
           size: [5, 6, 7, 8, 9, 10, 11, 12],
           stock: 10,
           category: "men's running shoes",
+          rating: 5,
         },
       ],
+      cart: [],
     };
+  },
+  computed: {
+    cartItemCount() {
+      let count = 0;
+      for (let i = 0; i < this.cart.length; i++) {
+        count += this.cart[i].count;
+      }
+      return count;
+    },
+  },
+  methods: {
+    productCal(val) {
+      let index = this.cart.findIndex((el) => el.title === val.value.title);
+      switch (val.type) {
+        case "add":
+          if (index >= 0) {
+            this.basket[index].count++;
+          } else {
+            this.cart.unshift({ ...val.value, count: 1 });
+          }
+          break;
+        case "+":
+          this.basket[index].count++;
+          break;
+        case "-":
+          if (this.basket[index].count > 1) {
+            this.basket[index].count--;
+          } else {
+            this.cart.splice(index, 1);
+          }
+          break;
+        case "del":
+          this.cart.splice(index, 1);
+          break;
+        default:
+      }
+    },
   },
 };
 </script>
@@ -119,5 +157,6 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  background: #f6f6f6;
 }
 </style>

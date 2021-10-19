@@ -1,20 +1,21 @@
 <template>
-  <div class="d-flex flex-row justify-content-around align-items-center">
-    <b-card
-      :title="product.title"
-      :img-src="product.images[0]"
-      img-alt="product.title"
-      img-top
-      tag="article"
-      style="max-width: 20rem"
-      class="mb-4"
-    >
-      <b-card-text>
-        {{ product.summary }}
-      </b-card-text>
+  <div>
+    <div>
+      <b-card
+        :title="product.title"
+        :img-src="product.images[0]"
+        img-alt="product.title"
+        img-top
+        tag="div"
+        style="max-width: 20rem"
+      >
+        <b-card-text>
+          {{ product.summary }}
+        </b-card-text>
 
-      <b-button href="#" variant="primary">Add To Cart</b-button>
-    </b-card>
+        <b-button href="#" variant="primary">Add To Cart</b-button>
+      </b-card>
+    </div>
   </div>
 </template>
 
@@ -34,6 +35,10 @@ h1 {
   width: 316.99px;
   height: 316.99px;
   overflow: hidden;
-  border: 5px solid black;
+}
+
+.card {
+  background: none;
+  border: none;
 }
 </style>

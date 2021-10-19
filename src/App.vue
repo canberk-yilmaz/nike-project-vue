@@ -1,87 +1,110 @@
 <template>
   <div id="app">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="#">Logo Here</a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Careers</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Contact</a>
-          </li>
-        </ul>
-        <form class="form-inline my-2 my-lg-0">
-          <input
-            class="form-control mr-sm-2"
-            type="search"
-            placeholder="Search"
-            aria-label="Search"
-          />
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
-            Search
-          </button>
-        </form>
-      </div>
-    </nav>
+    <div class="nav">
+    <Navbar />
+    <ShoppingCart />
+    </div>
     <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
-    <b-row class="d-flex justify-content-center">
-      <ProductCard v-for="(item, i) in productList" :key="i" class="col" />
+    <b-row class="d-flex flex-row justify-content-around align-items-center">
+      <div class="col-12">
+        <ProductCard
+          :product="product"
+          v-for="(product, i) in productList"
+          :key="i"
+          class="col"
+        />
+      </div>
     </b-row>
   </div>
 </template>
 
 <script>
+
+import Navbar from "./components/Navbar.vue";
 import ProductCard from "./components/ProductCard.vue";
+import ShoppingCart from "./components/ShoppingCart.vue";
+
 
 export default {
   name: "App",
   components: {
+    Navbar,
+    ShoppingCart,
     ProductCard,
   },
   data() {
     return {
       productList: [
         {
-          title: "Title 1",
+          title: "Nike Epic React Flyknit 1",
+          color: "Black",
           summary:
             "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam, quam.",
           rating: 4,
           price: 10,
+          images: [
+            "https://github.com/canberk-yilmaz/nike-project-vue/blob/main/src/img/black/1.webp?raw=true",
+            "https://github.com/canberk-yilmaz/nike-project-vue/blob/main/src/img/black/2.webp?raw=true",
+            "https://github.com/canberk-yilmaz/nike-project-vue/blob/main/src/img/black/3.jpg?raw=true",
+            "https://github.com/canberk-yilmaz/nike-project-vue/blob/main/src/img/black/4.webp?raw=true",
+            "https://github.com/canberk-yilmaz/nike-project-vue/blob/main/src/img/black/5.webp?raw=true",
+            "https://github.com/canberk-yilmaz/nike-project-vue/blob/main/src/img/black/6.webp?raw=true",
+          ],
+          size: [5, 6, 7, 8, 9, 10, 11, 12],
+          stock: 10,
+          category: "men's running shoes",
         },
         {
-          title: "Title 2",
+          title: "Nike Epic React Flyknit 2",
+          color: "Pearl Pink",
           summary: "Lorem ipsum dolor sit amet.",
           rating: 3,
           price: 20,
+          images: [
+            "https://github.com/canberk-yilmaz/nike-project-vue/blob/main/src/img/pearlPink/1.png?raw=true",
+            "https://github.com/canberk-yilmaz/nike-project-vue/blob/main/src/img/pearlPink/2.png?raw=true",
+            "https://github.com/canberk-yilmaz/nike-project-vue/blob/main/src/img/pearlPink/3.png?raw=true",
+            "https://github.com/canberk-yilmaz/nike-project-vue/blob/main/src/img/pearlPink/4.png?raw=true",
+            "https://github.com/canberk-yilmaz/nike-project-vue/blob/main/src/img/pearlPink/5.png?raw=true",
+            "https://github.com/canberk-yilmaz/nike-project-vue/blob/main/src/img/pearlPink/6.jpg?raw=true",
+          ],
+          size: [5, 6, 7, 8, 9, 10, 11, 12],
+          stock: 10,
+          category: "women's running shoes",
         },
         {
-          title: "Title 3",
+          title: "Nike Epic React Flyknit 3",
+          color: "Pink",
           summary: "Lorem ipsum dolor, sit amet consectetur adipisicing.",
           price: 5,
+          images: [
+            "https://github.com/canberk-yilmaz/nike-project-vue/blob/main/src/img/pink-2/1.webp?raw=true",
+            "https://github.com/canberk-yilmaz/nike-project-vue/blob/main/src/img/pink-2/2.webp?raw=true",
+            "https://github.com/canberk-yilmaz/nike-project-vue/blob/main/src/img/pink-2/3.jpg?raw=true",
+            "https://github.com/canberk-yilmaz/nike-project-vue/blob/main/src/img/pink-2/4.webp?raw=true",
+            "https://github.com/canberk-yilmaz/nike-project-vue/blob/main/src/img/pink-2/5.webp?raw=true",
+            "https://github.com/canberk-yilmaz/nike-project-vue/blob/main/src/img/pink-2/6.webp?raw=true",
+          ],
+          size: [5, 6, 7, 8, 9, 10, 11, 12],
+          stock: 10,
+          category: "women's running shoes",
         },
         {
-          title: "Title 4",
+          title: "Nike Epic React Flyknit 4",
+          color: "Blue",
           summary: "Lorem ipsum dolor, sit amet consectetur adipisicing.",
           price: 5,
+          images: [
+            "https://github.com/canberk-yilmaz/nike-project-vue/blob/main/src/img/white/1.webp?raw=true",
+            "https://github.com/canberk-yilmaz/nike-project-vue/blob/main/src/img/white/2.webp?raw=true",
+            "https://github.com/canberk-yilmaz/nike-project-vue/blob/main/src/img/white/3.jpg?raw=true",
+            "https://github.com/canberk-yilmaz/nike-project-vue/blob/main/src/img/white/4.webp?raw=true",
+            "https://github.com/canberk-yilmaz/nike-project-vue/blob/main/src/img/white/5.webp?raw=true",
+            "https://github.com/canberk-yilmaz/nike-project-vue/blob/main/src/img/white/6.webp?raw=true",
+          ],
+          size: [5, 6, 7, 8, 9, 10, 11, 12],
+          stock: 10,
+          category: "men's running shoes",
         },
       ],
     };
@@ -96,6 +119,5 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 </style>

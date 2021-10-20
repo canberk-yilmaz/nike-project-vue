@@ -11,11 +11,12 @@ export default {
 </script>
 
 <style scoped>
-* {
-  color: #111;
-}
+
 
 i {
   font-size: 2rem;
+  color: #111;
 }
+
+
 </style>

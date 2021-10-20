@@ -11,11 +11,6 @@
         class="col"
       />
     </b-row>
-
-    <img
-      src="https://ata-patika-odev1.surge.sh/img/pink.75d18eac.png"
-      alt="shoe"
-    />
   </div>
 </template>
 
@@ -33,11 +28,11 @@ export default {
     return {
       productList: [
         {
-          title: "Nike Epic React Flyknit 1",
+          title: "Nike React Infinity Run Flyknit 2 By You",
           color: "Black",
           summary:
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam, quam.",
-          price: 10,
+            "The Nike React Infinity Run Flyknit 2 By You continues to help keep you running. A refreshed upper uses Flywire technology that combines with Flyknit for support and breathability where you need it. The high foam heights provide soft responsiveness and long-lasting comfort.",
+          price: 140,
           images: [
             "https://github.com/canberk-yilmaz/nike-project-vue/blob/main/src/img/black/1.webp?raw=true",
             "https://github.com/canberk-yilmaz/nike-project-vue/blob/main/src/img/black/2.webp?raw=true",
@@ -48,7 +43,7 @@ export default {
           ],
           size: [5, 6, 7, 8, 9, 10, 11, 12],
           stock: 10,
-          category: "men's running shoes",
+          category: "MEN",
           rating: 4,
         },
         {
@@ -56,7 +51,7 @@ export default {
           color: "Pearl Pink",
           summary:
             "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam, quam.",
-          price: 20,
+          price: 150,
           images: [
             "https://github.com/canberk-yilmaz/nike-project-vue/blob/main/src/img/pearlPink/1.png?raw=true",
             "https://github.com/canberk-yilmaz/nike-project-vue/blob/main/src/img/pearlPink/2.png?raw=true",
@@ -67,14 +62,14 @@ export default {
           ],
           size: [5, 6, 7, 8, 9, 10, 11, 12],
           stock: 10,
-          category: "women's running shoes",
+          category: "WOMEN",
           rating: 5,
         },
         {
           title: "Nike Epic React Flyknit 3",
           color: "Pink",
           summary: "Lorem ipsum dolor, sit amet consectetur adipisicing.",
-          price: 5,
+          price: 145,
           images: [
             "https://github.com/canberk-yilmaz/nike-project-vue/blob/main/src/img/pink-2/1.webp?raw=true",
             "https://github.com/canberk-yilmaz/nike-project-vue/blob/main/src/img/pink-2/2.webp?raw=true",
@@ -85,14 +80,14 @@ export default {
           ],
           size: [5, 6, 7, 8, 9, 10, 11, 12],
           stock: 10,
-          category: "women's running shoes",
+          category: "WOMEN",
           rating: 4,
         },
         {
           title: "Nike Epic React Flyknit 4",
           color: "Blue",
           summary: "Lorem ipsum dolor, sit amet consectetur adipisicing.",
-          price: 5,
+          price: 155,
           images: [
             "https://github.com/canberk-yilmaz/nike-project-vue/blob/main/src/img/white/1.webp?raw=true",
             "https://github.com/canberk-yilmaz/nike-project-vue/blob/main/src/img/white/2.webp?raw=true",
@@ -103,10 +98,14 @@ export default {
           ],
           size: [5, 6, 7, 8, 9, 10, 11, 12],
           stock: 10,
-          category: "men's running shoes",
+          category: "MEN",
           rating: 5,
         },
       ],
+      catClass: {
+        MEN: "blue",
+        WOMEN: "pink"
+      },
       cart: [],
     };
   },
@@ -152,11 +151,22 @@ export default {
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Noto Sans Mono", monospace;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
   background: #f6f6f6;
+  height: 100vh;
 }
+
+.pink {
+  color: pink;
+}
+
+.blue {
+  color: blue;
+}
+
+
 </style>

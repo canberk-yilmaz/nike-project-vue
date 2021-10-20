@@ -28,6 +28,8 @@ export default {
   align-items: center;
   justify-content: center;
   color: #111;
+  font-size: 2rem;
+  font-weight: bold;
 }
 
 .nav-pills .nav-link.active,

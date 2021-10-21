@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div>
+    <div class="col-md-6">
       <img
         :src="product.images[0]"
         :alt="product.title"
@@ -12,15 +12,33 @@
         </div>
       </div>
     </div>
-    <div class="desc">
+    <div class="desc col-md-6">
       <h4>{{ product.category }}'S RUNNING SHOE</h4>
       <h3>{{ product.title }}</h3>
       <h3>${{ product.price }}</h3>
+      <h3>{{ product.rating }}</h3>
       <h4 v-if="product.stock > 5">In Stock</h4>
       <h4 v-else-if="product.stock > 1">Last Few Pieces!</h4>
       <h4 v-else-if="product.stock > 0">Last One!</h4>
       <h4 v-else>Out of Stock</h4>
       <p>{{ product.summary }}</p>
+      <div>
+        <span
+          v-for="(item, i) in product.rating"
+          class="fa fa-star checked"
+          :key="i"
+        />
+        <span
+          v-for="(item, i) in 5 - product.rating"
+          class="fa fa-star"
+          :key="'star' - i"
+        />
+        <div class="cta">
+          <button @click="addToCart(product)">
+            <b-badge variant="light">Add To Cart</b-badge>
+          </button>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -29,6 +47,11 @@
 export default {
   name: "ProductCard",
   props: ["product"],
+  methods: {
+    addToCart(value) {
+      this.$emit("addToCart", value);
+    },
+  },
 };
 </script>
 
@@ -83,7 +106,14 @@ img {
   overflow: hidden;
 }
 
-* {
+.fa-star {
+  color: #d8cccc;
+}
+
+.checked {
+  color: #2c3e50;
+}
+.container {
   background: #f6f6f6;
 }
 </style>

@@ -4,16 +4,34 @@
       <b-nav-item active>All Products</b-nav-item>
       <b-nav-item>Women</b-nav-item>
       <b-nav-item>Men</b-nav-item>
-      <b-nav-item>
+      <!-- <b-nav-item>
         <i class="fas fa-shopping-bag"></i>
-      </b-nav-item>
+      </b-nav-item> -->
     </b-nav>
+    <b-dropdown id="dropdown-dropright" dropright>
+      <template #button-content>
+        <span class="m-2 fas fa-shopping-bag"></span>
+        <b-badge>{{ cart.length }}</b-badge>
+      </template>
+      <b-dropdown-item v-for="(item, index) in cart" :key="index">
+        <div>
+          {{ item.title }} - ${{ item.price * item.counter }}
+          <b-button @click="deleteItem" variant="danger">x</b-button>
+        </div>
+      </b-dropdown-item>
+    </b-dropdown>
   </div>
 </template>
 
 <script>
 export default {
   name: "Navbar",
+  props: ["cart"],
+  methods: {
+    deleteItem(i) {
+      this.cart.splice(i, 1);
+    },
+  },
 };
 </script>
 
@@ -46,5 +64,9 @@ li.nav-item {
 i {
   font-size: 2rem;
   color: #111;
+}
+
+.badge {
+  background-color: #f1f1f1;
 }
 </style>

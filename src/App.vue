@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Navbar />
+    <Navbar :cart="cart" />
     <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
     <div class="contain">
       <b-row
@@ -12,6 +12,7 @@
           v-for="(product, i) in productList"
           :key="i"
           class="col"
+          @addToCart="addToCart"
         />
       </b-row>
     </div>
@@ -39,11 +40,6 @@ export default {
           price: 140,
           images: [
             "https://github.com/canberk-yilmaz/nike-project-vue/blob/main/src/img/black/1.webp?raw=true",
-            "https://github.com/canberk-yilmaz/nike-project-vue/blob/main/src/img/black/2.webp?raw=true",
-            "https://github.com/canberk-yilmaz/nike-project-vue/blob/main/src/img/black/3.jpg?raw=true",
-            "https://github.com/canberk-yilmaz/nike-project-vue/blob/main/src/img/black/4.webp?raw=true",
-            "https://github.com/canberk-yilmaz/nike-project-vue/blob/main/src/img/black/5.webp?raw=true",
-            "https://github.com/canberk-yilmaz/nike-project-vue/blob/main/src/img/black/6.webp?raw=true",
           ],
           size: [5, 6, 7, 8, 9, 10, 11, 12],
           stock: 10,
@@ -58,11 +54,6 @@ export default {
           price: 150,
           images: [
             "https://github.com/canberk-yilmaz/nike-project-vue/blob/main/src/img/pink-2/1.webp?raw=true",
-            "https://github.com/canberk-yilmaz/nike-project-vue/blob/main/src/img/pink-2/2.webp?raw=true",
-            "https://github.com/canberk-yilmaz/nike-project-vue/blob/main/src/img/pink-2/3.jpg?raw=true",
-            "https://github.com/canberk-yilmaz/nike-project-vue/blob/main/src/img/pink-2/4.webp?raw=true",
-            "https://github.com/canberk-yilmaz/nike-project-vue/blob/main/src/img/pink-2/5.webp?raw=true",
-            "https://github.com/canberk-yilmaz/nike-project-vue/blob/main/src/img/pink-2/6.webp?raw=true",
           ],
           size: [5, 6, 7, 8, 9, 10, 11, 12],
           stock: 10,
@@ -76,11 +67,6 @@ export default {
           price: 145,
           images: [
             "https://github.com/canberk-yilmaz/nike-project-vue/blob/main/src/img/pink-2/1.webp?raw=true",
-            "https://github.com/canberk-yilmaz/nike-project-vue/blob/main/src/img/pink-2/2.webp?raw=true",
-            "https://github.com/canberk-yilmaz/nike-project-vue/blob/main/src/img/pink-2/3.jpg?raw=true",
-            "https://github.com/canberk-yilmaz/nike-project-vue/blob/main/src/img/pink-2/4.webp?raw=true",
-            "https://github.com/canberk-yilmaz/nike-project-vue/blob/main/src/img/pink-2/5.webp?raw=true",
-            "https://github.com/canberk-yilmaz/nike-project-vue/blob/main/src/img/pink-2/6.webp?raw=true",
           ],
           size: [5, 6, 7, 8, 9, 10, 11, 12],
           stock: 10,
@@ -94,11 +80,6 @@ export default {
           price: 155,
           images: [
             "https://github.com/canberk-yilmaz/nike-project-vue/blob/main/src/img/white/1.webp?raw=true",
-            "https://github.com/canberk-yilmaz/nike-project-vue/blob/main/src/img/white/2.webp?raw=true",
-            "https://github.com/canberk-yilmaz/nike-project-vue/blob/main/src/img/white/3.jpg?raw=true",
-            "https://github.com/canberk-yilmaz/nike-project-vue/blob/main/src/img/white/4.webp?raw=true",
-            "https://github.com/canberk-yilmaz/nike-project-vue/blob/main/src/img/white/5.webp?raw=true",
-            "https://github.com/canberk-yilmaz/nike-project-vue/blob/main/src/img/white/6.webp?raw=true",
           ],
           size: [5, 6, 7, 8, 9, 10, 11, 12],
           stock: 10,
@@ -111,43 +92,22 @@ export default {
         WOMEN: "pink",
       },
       cart: [],
+      alert: false,
+      counter: 0,
     };
   },
-  computed: {
-    cartItemCount() {
-      let count = 0;
-      for (let i = 0; i < this.cart.length; i++) {
-        count += this.cart[i].count;
-      }
-      return count;
-    },
-  },
   methods: {
-    productCal(val) {
-      let index = this.cart.findIndex((el) => el.title === val.value.title);
-      switch (val.type) {
-        case "add":
-          if (index >= 0) {
-            this.basket[index].count++;
-          } else {
-            this.cart.unshift({ ...val.value, count: 1 });
-          }
-          break;
-        case "+":
-          this.basket[index].count++;
-          break;
-        case "-":
-          if (this.basket[index].count > 1) {
-            this.basket[index].count--;
-          } else {
-            this.cart.splice(index, 1);
-          }
-          break;
-        case "del":
-          this.cart.splice(index, 1);
-          break;
-        default:
+    addToCart(e) {
+      let addedBefore = this.cart.filter((item) => item.title === e.title);
+      if (addedBefore) {
+        let index = this.cart.findIndex((item) => item.title === e.title);
+        this.cart[index].counter++;
+        this.cart.push({ ...e, counter: addedBefore + 1 });
+      } else {
+        this.cart.push({ ...e, counter: 1 });
       }
+      //this.cart.push(e);
+      console.log(this.cart);
     },
   },
 };
@@ -179,5 +139,19 @@ export default {
   max-width: 96rem;
   margin-left: auto;
   margin-right: auto;
+}
+
+.btn-secondary {
+  background: #f1f1f1;
+  color: #2c3e50;
+  border: none;
+}
+
+.btn.dropdown-toggle.btn-secondary:after {
+  content: none;
+}
+
+.dropdown-item {
+  font-size: 1rem;
 }
 </style>

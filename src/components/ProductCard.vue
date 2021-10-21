@@ -14,10 +14,13 @@
     </div>
     <div class="desc">
       <h4>{{ product.category }}'S RUNNING SHOE</h4>
-      <h2>{{ product.title }}</h2>
-      <h2>${{ product.price }}</h2>
+      <h3>{{ product.title }}</h3>
+      <h3>${{ product.price }}</h3>
+      <h4 v-if="product.stock > 5">In Stock</h4>
+      <h4 v-else-if="product.stock > 1">Last Few Pieces!</h4>
+      <h4 v-else-if="product.stock > 0">Last One!</h4>
+      <h4 v-else>Out of Stock</h4>
       <p>{{ product.summary }}</p>
-      <h4>Stock: {{ product.stock }}</h4>
     </div>
   </div>
 </template>
@@ -45,14 +48,13 @@ img {
 }
 
 .container {
-  border: 1px solid black;
-  height: 750px;
+  border: 2px solid black;
+  border-radius: 1rem;
+  box-shadow: 0px 0px 8px 8px #686565;
+  height: 34rem;
   display: flex;
-  align-items: center;
-  margin-left: 150px;
-  margin-right: 150px;
-  margin: 0px 150px 150px 150px;
-  max-width: 723px;
+  margin: 0 3rem 6rem 3rem;
+  max-width: 1000px;
 }
 
 .size-select {
@@ -60,7 +62,7 @@ img {
   justify-content: space-between;
   align-items: center;
   text-align: center;
-  overflow:visible
+  overflow: visible;
 }
 .shoe-size {
   display: flex;
@@ -69,12 +71,19 @@ img {
   width: 100%;
   height: 100%;
   border: 3px solid black;
-  
   color: black;
   font-weight: 800;
 }
 
 .desc {
   text-align: start;
+  align-items: start;
+  margin-left: 1rem;
+  margin-top: 1rem;
+  overflow: hidden;
+}
+
+* {
+  background: #f6f6f6;
 }
 </style>

@@ -2,15 +2,19 @@
   <div id="app">
     <Navbar />
     <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
-
-    <b-row class="d-flex align-items-center justify-content-center">
-      <ProductCard
-        :product="product"
-        v-for="(product, i) in productList"
-        :key="i"
-        class="col"
-      />
-    </b-row>
+    <div class="contain">
+      <b-row
+        class="d-flex align-items-center justify-content-center"
+        id="shoe-box"
+      >
+        <ProductCard
+          :product="product"
+          v-for="(product, i) in productList"
+          :key="i"
+          class="col"
+        />
+      </b-row>
+    </div>
   </div>
 </template>
 
@@ -31,7 +35,7 @@ export default {
           title: "Nike React Infinity Run Flyknit 2 By You",
           color: "Black",
           summary:
-            "The Nike React Infinity Run Flyknit 2 By You continues to help keep you running. A refreshed upper uses Flywire technology that combines with Flyknit for support and breathability where you need it. The high foam heights provide soft responsiveness and long-lasting comfort.",
+            "The Nike React Infinity Run Flyknit 2 By You continues to help keep you running. A refreshed upper uses Flywire technology that combines with Flyknit for support and breathability where you need it.",
           price: 140,
           images: [
             "https://github.com/canberk-yilmaz/nike-project-vue/blob/main/src/img/black/1.webp?raw=true",
@@ -53,12 +57,12 @@ export default {
             "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam, quam.",
           price: 150,
           images: [
-            "https://github.com/canberk-yilmaz/nike-project-vue/blob/main/src/img/pearlPink/1.png?raw=true",
-            "https://github.com/canberk-yilmaz/nike-project-vue/blob/main/src/img/pearlPink/2.png?raw=true",
-            "https://github.com/canberk-yilmaz/nike-project-vue/blob/main/src/img/pearlPink/3.png?raw=true",
-            "https://github.com/canberk-yilmaz/nike-project-vue/blob/main/src/img/pearlPink/4.png?raw=true",
-            "https://github.com/canberk-yilmaz/nike-project-vue/blob/main/src/img/pearlPink/5.png?raw=true",
-            "https://github.com/canberk-yilmaz/nike-project-vue/blob/main/src/img/pearlPink/6.jpg?raw=true",
+            "https://github.com/canberk-yilmaz/nike-project-vue/blob/main/src/img/pink-2/1.webp?raw=true",
+            "https://github.com/canberk-yilmaz/nike-project-vue/blob/main/src/img/pink-2/2.webp?raw=true",
+            "https://github.com/canberk-yilmaz/nike-project-vue/blob/main/src/img/pink-2/3.jpg?raw=true",
+            "https://github.com/canberk-yilmaz/nike-project-vue/blob/main/src/img/pink-2/4.webp?raw=true",
+            "https://github.com/canberk-yilmaz/nike-project-vue/blob/main/src/img/pink-2/5.webp?raw=true",
+            "https://github.com/canberk-yilmaz/nike-project-vue/blob/main/src/img/pink-2/6.webp?raw=true",
           ],
           size: [5, 6, 7, 8, 9, 10, 11, 12],
           stock: 10,
@@ -104,7 +108,7 @@ export default {
       ],
       catClass: {
         MEN: "blue",
-        WOMEN: "pink"
+        WOMEN: "pink",
       },
       cart: [],
     };
@@ -156,7 +160,6 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  background: #f6f6f6;
   height: 100vh;
 }
 
@@ -168,5 +171,13 @@ export default {
   color: blue;
 }
 
+* {
+  background: #f1f1f1;
+}
 
+.contain {
+  max-width: 96rem;
+  margin-left: auto;
+  margin-right: auto;
+}
 </style>

@@ -1,18 +1,19 @@
 <template>
   <div class="container">
-    <div class="col-md-6">
+    <div>
+      </div><div class="col-md-6">
       <img
         :src="product.images[0]"
         :alt="product.title"
         :img-alt="product.title"
       />
-      <div class="size-select" style="display: flex">
+      <div class="size-select d-flex">
         <div class="shoe-size mr-1" v-for="(n, index) in 8" :key="index">
           {{ n + 4 }}
         </div>
       </div>
     </div>
-    <div class="desc col-md-6">
+    <div class="desc col-6">
       <h4>{{ product.category }}'S RUNNING SHOE</h4>
       <h3>{{ product.title }}</h3>
       <h3>${{ product.price }}</h3>
@@ -34,7 +35,7 @@
           :key="'star' - i"
         />
         <div class="cta">
-          <button @click="addToCart(product)">
+          <button class="cta-btn" @click="addToCart(product)">
             <b-badge variant="light">Add To Cart</b-badge>
           </button>
         </div>
@@ -97,7 +98,9 @@ img {
   color: black;
   font-weight: 800;
 }
-
+.cta-btn {
+  width: 100%;
+}
 .desc {
   text-align: start;
   align-items: start;

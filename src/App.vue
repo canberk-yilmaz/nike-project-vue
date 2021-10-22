@@ -1,6 +1,60 @@
 <template>
   <div id="app">
-    <Navbar :cart="cart" />
+    <nav class="d-flex box mb-5 sticky-top">
+      <b-nav pills class="d-flex justify-content-center align-items-center">
+        <b-nav-item active>All Products</b-nav-item>
+        <b-nav-item class="pink">Women</b-nav-item>
+        <b-nav-item>Men</b-nav-item>
+        <!-- <b-nav-item>
+        <i class="fas fa-shopping-bag"></i>
+      </b-nav-item> -->
+      </b-nav>
+      <b-dropdown id="dropdown-dropright" dropright>
+        <template #button-content>
+          <span class="m-2 fas fa-shopping-bag"></span>
+          <b-badge>{{ cartTotal }}</b-badge>
+        </template>
+        <b-dropdown-item v-for="(item, index) in cart" :key="index">
+          <div v-if="item.count > 0">
+            <div>
+              {{ item.title }}
+              </div>
+              <div>Qty:{{ item.count }} - Total Price: ${{
+              item.price * item.count }}
+            </div>
+            <span>
+            <b-button
+              class="mr-2"
+              v-if="item.count > 1"
+              @click.stop.prevent="item.count--"
+              variant="dark"
+              >-</b-button
+            >
+            <b-button
+              class="mr-2"
+              v-else-if="(item.count = 1)"
+              @click.stop.prevent="deleteItem(index)"
+              variant="dark"
+              >-</b-button
+            >
+            <b-button
+              class="mr-2"
+              @click.stop.prevent="item.count++"
+              variant="dark"
+              >+</b-button
+            >
+            <b-button @click.stop.prevent="deleteItem(index)" variant="danger"
+              >x</b-button
+            >
+            </span>
+          </div>
+        </b-dropdown-item>
+
+        <b-dropdown-item v-show="cart.length === 0">
+          Oh No! Your Cart Is Empty :(
+        </b-dropdown-item>
+      </b-dropdown>
+    </nav>
     <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
     <div class="contain">
       <b-row
@@ -20,13 +74,11 @@
 </template>
 
 <script>
-import Navbar from "./components/Navbar.vue";
 import ProductCard from "./components/ProductCard.vue";
 
 export default {
   name: "App",
   components: {
-    Navbar,
     ProductCard,
   },
   data() {
@@ -98,16 +150,30 @@ export default {
   },
   methods: {
     addToCart(e) {
-      let addedBefore = this.cart.filter((item) => item.title === e.title);
+      let addedBefore = this.cart.filter(
+        (item) => item.title === e.title
+      ).length;
+
       if (addedBefore) {
         let index = this.cart.findIndex((item) => item.title === e.title);
-        this.cart[index].counter++;
-        this.cart.push({ ...e, counter: addedBefore + 1 });
+        console.log(index);
+        this.cart[index].count++;
       } else {
-        this.cart.push({ ...e, counter: 1 });
+        this.cart.push({ ...e, count: 1 });
       }
-      //this.cart.push(e);
       console.log(this.cart);
+    },
+    deleteItem(i) {
+      this.cart.splice(i, 1);
+    },
+  },
+  computed: {
+    cartTotal() {
+      let count = 0;
+      for (let i = 0; i < this.cart.length; i++) {
+        count += this.cart[i].count;
+      }
+      return count;
     },
   },
 };
@@ -121,6 +187,34 @@ export default {
   text-align: center;
   color: #2c3e50;
   height: 100vh;
+}
+
+.nav-pills .nav-link.active,
+.nav-pills .show > .nav-link {
+  background-color: transparent;
+  color: #111;
+}
+
+li.nav-item {
+  width: 200px;
+}
+
+.box {
+  border-bottom: 0.2rem solid #2c3e50;
+  margin-bottom: 2.5rem;
+  margin: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #2c3e50;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.fa-shopping-bag.badge {
+  background-color: #f1f1f1;
+  color: #111;
+  font-size: 2rem;
 }
 
 .pink {
@@ -140,6 +234,9 @@ export default {
   margin-left: auto;
   margin-right: auto;
 }
+.btn {
+  font-size: 2rem;
+}
 
 .btn-secondary {
   background: #f1f1f1;
@@ -153,5 +250,9 @@ export default {
 
 .dropdown-item {
   font-size: 1rem;
+}
+
+.nav-link {
+  color: #2c3e50;
 }
 </style>

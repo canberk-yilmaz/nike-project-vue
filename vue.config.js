@@ -14,7 +14,6 @@ const options = {
         'b-embed': 'src'
     }
 }
-
 module.exports = {
     publicPath: process.env.NODE_ENV === 'production'
         ? '/nike-project-vue/'

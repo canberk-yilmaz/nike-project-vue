@@ -164,8 +164,8 @@ export default {
           price: 150,
           images: [
             { img: require("@/assets/img/4.png"), color: "pink" },
-            { img: require("@/assets/5.png"), color: "gold" },
-            { img: require("@/assets/6.png"), color: "#8d9458" },
+            { img: require("@/assets/img/5.png"), color: "gold" },
+            { img: require("@/assets/img/6.png"), color: "#8d9458" },
           ],
           sizes: [
             { text: "6", value: "6" },

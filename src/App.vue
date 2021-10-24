@@ -138,9 +138,9 @@ export default {
             "Giannis is an athlete of freakish power and incredible range. His ability to play any position make him difficult to guard and nearly impossible to stop. The Zoom Freak 3 helps Giannis misdirecting Euro-step.",
           price: 140,
           images: [
-            { img: require("./img/1.png"), color: "Darksalmon" },
-            { img: require("./img/2.png"), color: "Black" },
-            { img: require("./img/3.png"), color: "MediumTurquoise" },
+            { img: require("@/assets/img/1.png"), color: "Darksalmon" },
+            { img: require("@/assets/img/2.png"), color: "Black" },
+            { img: require("@/assets/img/3.png"), color: "MediumTurquoise" },
           ],
           sizes: [
             { text: "6", value: "6" },
@@ -163,9 +163,9 @@ export default {
             "The Born out of the ideas and art of post-Soviet Union Russia, the Nike Air Force 1 Fontanka lets a new wave of comfort and style take hold. Upping the ante with its lifted midsole and layered upper that features soft leather and intricate stitching.",
           price: 150,
           images: [
-            { img: require("./img/4.png"), color: "pink" },
-            { img: require("./img/5.png"), color: "gold" },
-            { img: require("./img/6.png"), color: "#8d9458" },
+            { img: require("@/assets/img/4.png"), color: "pink" },
+            { img: require("@/assets/5.png"), color: "gold" },
+            { img: require("@/assets/6.png"), color: "#8d9458" },
           ],
           sizes: [
             { text: "6", value: "6" },
@@ -188,9 +188,9 @@ export default {
             "Future, fashion and flight intersect with the Jordan Air Mae, a shoe inspired by pioneering women. It's built on a thick-lugged outsole with plush foam and visible Nike Air cushioning.",
           price: 155,
           images: [
-            { img: require("./img/11.png"), color: "indianred" },
-            { img: require("./img/10.png"), color: "seagreen" },
-            { img: require("./img/12.png"), color: "#827567" },
+            { img: require("@/assets/img/11.png"), color: "indianred" },
+            { img: require("@/assets/img/10.png"), color: "seagreen" },
+            { img: require("@/assets/img/12.png"), color: "#827567" },
           ],
           sizes: [
             { text: "6", value: "6" },
@@ -213,9 +213,9 @@ export default {
             "Made from at least 40% recycled materials by weight, the Nike Air VaporMax 2021 FK is airy and easy to wear with superstretchy, recycled Flyknit fabric (plus a soft collar that sculpts your ankle).",
           price: 145,
           images: [
-            { img: require("./img/7.png"), color: "black" },
-            { img: require("./img/8.png"), color: "skyblue" },
-            { img: require("./img/9.png"), color: "slateblue" },
+            { img: require("@/assets/img/7.png"), color: "black" },
+            { img: require("@/assets/img/8.png"), color: "skyblue" },
+            { img: require("@/assets/img/9.png"), color: "slateblue" },
           ],
           sizes: [
             { text: "6", value: "6" },

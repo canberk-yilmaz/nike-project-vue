@@ -247,15 +247,15 @@ export default {
   },
   methods: {
     addToCart(e) {
-      let isFound = null;
-      isFound = this.cart.find(
+      let addedBefore = null;
+      addedBefore = this.cart.find(
         (item) =>
           item.id == e.id && item.color == e.color && item.size == e.size
       );
-      if (!isFound) {
+      if (!addedBefore) {
         this.cart.push(e);
       } else {
-        isFound.count += e.count;
+        addedBefore.count += e.count;
       }
       this.dismissCountDown = this.dismissSecs;
     },

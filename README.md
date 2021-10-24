@@ -2,6 +2,8 @@
 
 # Reengen FullStack Bootcamp - Vue.js & Node.js Bootcamp Week-1 project
 
+![Project Demo](./Demo.gif)
+
 ## Live Demo
 
 ### [Link 1](https://nike-project-vue.vercel.app/)
